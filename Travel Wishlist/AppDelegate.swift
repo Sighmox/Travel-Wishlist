@@ -16,6 +16,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Create LocationStore
+        let locationStore = LocationStore()
+        
+        // Access the MapViewController and set its Location store
+        let tabBarController = UITabBarController()
+        let tabChildren = tabBarController.children
+        for _ in tabChildren {
+            let mapViewController = window!.rootViewController as! MapViewController
+            mapViewController.locationStore = locationStore
+            
+        }
+        
+        
+        
+        
         return true
     }
 

@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		7960816E2225FF0B00FFC95B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7960816D2225FF0B00FFC95B /* AppDelegate.swift */; };
-		796081702225FF0B00FFC95B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7960816F2225FF0B00FFC95B /* ViewController.swift */; };
 		796081732225FF0B00FFC95B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 796081712225FF0B00FFC95B /* Main.storyboard */; };
 		796081752225FF0F00FFC95B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 796081742225FF0F00FFC95B /* Assets.xcassets */; };
 		796081782225FF0F00FFC95B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 796081762225FF0F00FFC95B /* LaunchScreen.storyboard */; };
 		796081832225FF0F00FFC95B /* Travel_WishlistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796081822225FF0F00FFC95B /* Travel_WishlistTests.swift */; };
 		7960818E2225FF0F00FFC95B /* Travel_WishlistUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7960818D2225FF0F00FFC95B /* Travel_WishlistUITests.swift */; };
+		79B05149222F3CF600B12CDD /* LocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B05148222F3CF600B12CDD /* LocationStore.swift */; };
+		79B0514B222F42C400B12CDD /* VisitedLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B0514A222F42C400B12CDD /* VisitedLocations.swift */; };
+		79B0514D222F497200B12CDD /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B0514C222F497200B12CDD /* Location.swift */; };
+		79CED8A3222702F500475BCA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CED8A2222702F500475BCA /* MapViewController.swift */; };
+		79CED8A52227094700475BCA /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CED8A42227094700475BCA /* WishlistViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +40,6 @@
 /* Begin PBXFileReference section */
 		7960816A2225FF0B00FFC95B /* Travel Wishlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Travel Wishlist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7960816D2225FF0B00FFC95B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7960816F2225FF0B00FFC95B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		796081722225FF0B00FFC95B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		796081742225FF0F00FFC95B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		796081772225FF0F00FFC95B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +50,11 @@
 		796081892225FF0F00FFC95B /* Travel WishlistUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Travel WishlistUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7960818D2225FF0F00FFC95B /* Travel_WishlistUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Travel_WishlistUITests.swift; sourceTree = "<group>"; };
 		7960818F2225FF0F00FFC95B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79B05148222F3CF600B12CDD /* LocationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStore.swift; sourceTree = "<group>"; };
+		79B0514A222F42C400B12CDD /* VisitedLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedLocations.swift; sourceTree = "<group>"; };
+		79B0514C222F497200B12CDD /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		79CED8A2222702F500475BCA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		79CED8A42227094700475BCA /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +106,12 @@
 			isa = PBXGroup;
 			children = (
 				7960816D2225FF0B00FFC95B /* AppDelegate.swift */,
-				7960816F2225FF0B00FFC95B /* ViewController.swift */,
+				79CED8A2222702F500475BCA /* MapViewController.swift */,
+				79B0514A222F42C400B12CDD /* VisitedLocations.swift */,
+				79B05148222F3CF600B12CDD /* LocationStore.swift */,
+				79B0514C222F497200B12CDD /* Location.swift */,
 				796081712225FF0B00FFC95B /* Main.storyboard */,
+				79CED8A42227094700475BCA /* WishlistViewController.swift */,
 				796081742225FF0F00FFC95B /* Assets.xcassets */,
 				796081762225FF0F00FFC95B /* LaunchScreen.storyboard */,
 				796081792225FF0F00FFC95B /* Info.plist */,
@@ -256,7 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				796081702225FF0B00FFC95B /* ViewController.swift in Sources */,
+				79B0514B222F42C400B12CDD /* VisitedLocations.swift in Sources */,
+				79B05149222F3CF600B12CDD /* LocationStore.swift in Sources */,
+				79CED8A3222702F500475BCA /* MapViewController.swift in Sources */,
+				79CED8A52227094700475BCA /* WishlistViewController.swift in Sources */,
+				79B0514D222F497200B12CDD /* Location.swift in Sources */,
 				7960816E2225FF0B00FFC95B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
