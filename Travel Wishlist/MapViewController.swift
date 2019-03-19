@@ -16,7 +16,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
     var locationStore: LocationStore!
     var locationString = String()
-    // Adds new locations
+    var tableView: VisitedLocations!
+    var thelocation: Location!
+    
+    var myLocations: [Location] = []
+    
+    var loc: [Location] = [] {
+        didSet {
+            myLocations = loc
+        }
+    }
+    
+    
+    
+    
+
+    
     
     
     @IBOutlet weak var mapView: MKMapView!
@@ -42,79 +57,76 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         mapView.mapType = MKMapType.standard
         
-        //let location = CLLocationCoordinate2D(latitude: CLLocationDegrees(keyLat), longitude: CLLocationDegrees(keyLon))
-        //let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-        //let regin = MKCoordinateRegion(center: location, span: span)
-        //mapView.setRegion(regin, animated: true)
-        //let annotation = MKPointAnnotation()
-        //annotation.coordinate = location
-        //mapView.addAnnotation(annotation)
+        // Sets the initial View of the map
+        
+        let aLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(44.9765), longitude: CLLocationDegrees(-93.2761))
+        let span = MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
+        let regin = MKCoordinateRegion(center: aLocation, span: span)
+        mapView.setRegion(regin, animated: true)
         
         
         
     }
-    
-    
-    
     
     // Button that adds a place
     
     @IBAction func addAPlace(_ sender: Any) {
         
-        let inputAlert = UIAlertController(title: "", message: "Would you like to add this location?",
-                                           preferredStyle: .alert)
-        inputAlert.addAction(UIAlertAction(title: "Add", style: .default, handler: {(action: UIAlertAction) in
-            if self.selectedAnnotation?.coordinate != nil {
-                let annotation = self.selectedAnnotation?.coordinate
-                _ = annotation
-                let newLocation = Location (name: self.locationString, visited: false)
-                _ = self.locationStore.add(newLocation)
-                //let indexPath = IndexPath(row: index, section: 0)
-                //self.tableView.insertRows(at: [indexPath], with: .automatic)
-                
-            }
-        }
-        ))
-        inputAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(inputAlert, animated: true)
         
+        self.myLocations.append(thelocation)
+        print(myLocations)
+        
+    
     }
+    
  
     
+    @IBAction func showDetail(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "showDetail", sender: sender)
+    }
     
-    @objc func handleTap (_ gestureRecognizer: UILongPressGestureRecognizer) {
-        
-        
-        
+    @objc func handleTap (_ gestureRecognizer: UITapGestureRecognizer) {
         let location = gestureRecognizer.location(in: mapView)
         let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
         if let myLocation = locationManager.location {
             let annotation = MKPointAnnotation()
             annotation.coordinate = myLocation.coordinate
             
+            
             let aLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(coordinate.latitude), longitude: CLLocationDegrees(coordinate.longitude))
-            let span = MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)
+            let span = MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
             let regin = MKCoordinateRegion(center: aLocation, span: span)
             mapView.setRegion(regin, animated: true)
             
             // This displays the location below the placemark in an address format
             geoCoder.reverseGeocodeLocation(CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude), completionHandler: { (placeMarks: [CLPlacemark]?, error: Error?) in
+                
+                if let placeMark = placeMarks?[0] {
+                    
                 if error == nil {
-                    let placeMark = placeMarks![0]
+                    
                     self.reverseGeocodeComplete(location: placeMark)
                     let placeName = placeMark.name ?? ""
                     
                     
-                    
+                    // Adds locations to the model
                     DispatchQueue.main.async {
+        
+                        
                         self.locationString = "\(placeName)"
+                        //var newLocation = Location(name: self.locationString, visited: false)
+                        //self.locationStore.add(newLocation)
+                        
+                        let newPlace = Location(name: self.locationString, visited: false)
+                        self.thelocation = newPlace
+                        
+                    
                         
                     }
-                    
-                    
-                    
-                    
-                    
+                        
+                    }
+                        
                 }
             })
         }
@@ -125,6 +137,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         annotation.coordinate = coordinate
         annotation.title = "\(locationString)"
         mapView.addAnnotation(annotation)
+        
     
     }
     
@@ -138,21 +151,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     
-      //  func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-     //   let latValStr : String = String(format: "%0.02f", Float((view.annotation?.coordinate.latitude)!))
-    //    let lonValStr : String = String(format: "%0.02f", Float((view.annotation?.coordinate.longitude)!))
-    
-        
-     //   print("latitude: \(latValStr) & longitude: \(lonValStr)")
-   // }
-    
-    
-    
     
     // This checks if authorization has been granted and displays a message if not
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {
-            mapView.showsUserLocation = true
+            mapView.showsUserLocation = false
            // moveToCurrentLocation()
         } else {
             let alert = UIAlertController(title: "Can't display location", message: "Please grant permission in settings",
@@ -168,25 +171,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
-            let name = locationStore.createLocation()
+            //let name = locationStore.createLocation()
             let detailView = segue.destination as! VisitedLocations
-            detailView.location = name
-            print(name)
+            detailView.location = thelocation
+            //print(name)
             
             
             
             
         }
     }
-    /*
-    func moveToCurrentLocation() {
-        if let location = locationManager.location {
-            mapView.setCenter(location.coordinate , animated: true)
- 
-        }
-    }
-    */
+    
     
     }
+
+
+
 
 

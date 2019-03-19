@@ -16,6 +16,6 @@ class Location: NSObject {
         self.name = name
         self.visited = visited
         
-        super.init()
+       // super.init()
     }
 }

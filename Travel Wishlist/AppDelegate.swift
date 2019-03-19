@@ -18,21 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Create LocationStore
-        let locationStore = LocationStore()
-        
-        // Access the MapViewController and set its Location store
-        let tabBarController = UITabBarController()
-        let tabChildren = tabBarController.children
-        for _ in tabChildren {
-            let mapViewController = window!.rootViewController as! MapViewController
-            mapViewController.locationStore = locationStore
-            
-        }
-        
-        
-        
+//        let locationStore = LocationStore()
+//        let tableViewController = window?.rootViewController as? VisitedLocations
+//        tableViewController?.locationStore = locationStore
         
         return true
+        
+            
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -58,5 +51,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
-}
+
 
