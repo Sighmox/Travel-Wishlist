@@ -34,12 +34,12 @@ class VisitedLocations: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "VisitedLocations", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         let location = loc[indexPath.row]
         
-        cell.textLabel?.text = location.name
-        //cell.detailTextLabel!.text = "\(coordinate)"
+        cell.textLabel?.text = location.locationName
+        cell.detailTextLabel!.text = "\(location.locationDetail)"
         return cell
     }
     

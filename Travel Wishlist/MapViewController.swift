@@ -108,6 +108,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     
                     self.reverseGeocodeComplete(location: placeMark)
                     let placeName = placeMark.name ?? ""
+                    let placeDetail = placeMark.thoroughfare ?? ""
                     
                     
                     // Adds locations to the model
@@ -118,7 +119,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         //var newLocation = Location(name: self.locationString, visited: false)
                         //self.locationStore.add(newLocation)
                         
-                        let newPlace = Location(name: self.locationString, visited: false)
+                        let newPlace = Location(locationName: self.locationString, locationDetail: placeDetail)
                         self.thelocation = newPlace
                         
                     
@@ -173,7 +174,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if segue.identifier == "showDetail" {
             //let name = locationStore.createLocation()
             let detailView = segue.destination as! VisitedLocations
-            detailView.location = thelocation
+            detailView.loc = myLocations
             //print(name)
             
             

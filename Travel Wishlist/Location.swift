@@ -8,14 +8,17 @@
 
 import UIKit
 
-class Location: NSObject {
-    var name: String
-    var visited: Bool
-    
-    init(name: String, visited: Bool) {
-        self.name = name
-        self.visited = visited
+class Location : NSObject {
+        
+        var locationName: String
+        var locationDetail: String
+        
+        init(locationName: String, locationDetail: String) {
+            
+            self.locationName = locationName
+            self.locationDetail = locationDetail
+        }
         
        // super.init()
     }
-}
+
