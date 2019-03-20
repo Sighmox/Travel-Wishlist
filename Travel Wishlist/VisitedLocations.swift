@@ -32,7 +32,7 @@ class VisitedLocations: UITableViewController {
         return loc.count
     }
     
-    
+    // Displays the cells that are sent form Visited Locations
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
@@ -43,5 +43,27 @@ class VisitedLocations: UITableViewController {
         return cell
     }
     
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            let place = locationStore.visited[indexPath.row]
+//
+//            let title = "Visited?"
+//            let message = "Have you visited this place?"
+//
+//            let ac = UIAlertController(title: title,
+//                                       message: message,
+//                                       preferredStyle: .actionSheet)
+//
+//            let visitAction = UIAlertAction(title: title, style: .default , handler: nil)
+//            ac.addAction(self.backgroundColor = .green)
+//
+//        }
+//    }
     
-}
+    
+    }
+    
+    
+    
+    
+

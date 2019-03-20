@@ -43,7 +43,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     let geoCoder = CLGeocoder()
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
@@ -60,7 +59,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Sets the initial View of the map
         
         let aLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(44.9765), longitude: CLLocationDegrees(-93.2761))
-        let span = MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
+        let span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
         let regin = MKCoordinateRegion(center: aLocation, span: span)
         mapView.setRegion(regin, animated: true)
         
@@ -78,6 +77,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
     
     }
+    // This switches the color of the pins when selected
+//        func mapView(_mapView: MKMapView, didSelect view: MKAnnotation) {
+//            if let view = view as? MKPinAnnotationView {
+//                view.pinTintColor = UIColor.yellow
+//            }
+//        }
+
     
  
     
@@ -95,7 +101,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             
             let aLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(coordinate.latitude), longitude: CLLocationDegrees(coordinate.longitude))
-            let span = MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15)
+            let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
             let regin = MKCoordinateRegion(center: aLocation, span: span)
             mapView.setRegion(regin, animated: true)
             
@@ -170,6 +176,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
             }
     
+    // This sends new places to the table view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             //let name = locationStore.createLocation()
