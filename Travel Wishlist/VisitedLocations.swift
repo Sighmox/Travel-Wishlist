@@ -10,8 +10,7 @@ import UIKit
 
 class VisitedLocations: UITableViewController {
 
-    
-        
+    let sections = ["Not Visited", "Visited"]
     
     override func viewDidLoad() {
         super .viewDidLoad()
@@ -26,11 +25,13 @@ class VisitedLocations: UITableViewController {
     var locationStore: LocationStore!
     var location: Location!
     var loc: [Location] = []
-    
+    // Tells the tableview how many cells are needed
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return loc.count
     }
+    
+    
     
     // Displays the cells that are sent form Visited Locations
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,6 +44,30 @@ class VisitedLocations: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    // This is the swipe function to indicate if a place has been visited- Stack Overflow
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let visited = UITableViewRowAction(style: .normal, title: "Visited?") { action, index in
+            let cell = UITableViewCell()
+            cell.backgroundColor = .yellow
+            
+        
+            print("visited button tapped")
+            
+        }
+    
+        visited.backgroundColor = .green
+        
+        return [visited]
+    
+       
+        
+        
+        
+    }
 //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 //        if editingStyle == .delete {
 //            let place = locationStore.visited[indexPath.row]
@@ -59,6 +84,8 @@ class VisitedLocations: UITableViewController {
 //
 //        }
 //    }
+//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexpath: NSIndexPath) {
+//        cell.contentView.backgroundColor = UIColor.yellow
     
     
     }

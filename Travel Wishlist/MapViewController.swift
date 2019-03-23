@@ -71,10 +71,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @IBAction func addAPlace(_ sender: Any) {
         
-        
+        if thelocation == nil {
+            return
+        } else {
         self.myLocations.append(thelocation)
         print(myLocations)
-        
+        }
     
     }
     // This switches the color of the pins when selected
@@ -100,8 +102,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             annotation.coordinate = myLocation.coordinate
             
             
+            
+            
+            // The distance above the area viewed when a pin added
             let aLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(coordinate.latitude), longitude: CLLocationDegrees(coordinate.longitude))
-            let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
             let regin = MKCoordinateRegion(center: aLocation, span: span)
             mapView.setRegion(regin, animated: true)
             
@@ -125,7 +130,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                         //var newLocation = Location(name: self.locationString, visited: false)
                         //self.locationStore.add(newLocation)
                         
-                        let newPlace = Location(locationName: self.locationString, locationDetail: placeDetail)
+                        let newPlace = Location(locationName: self.locationString, locationDetail: placeDetail, visited: false)
                         self.thelocation = newPlace
                         
                     
